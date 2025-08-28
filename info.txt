@@ -1,0 +1,51 @@
+// Plugins a instalar que fueron referenciados en la versión anterior del codigo fuente 
+para el Site y que se encentraban referenciados en el archivo gatsby.config.js
+
+1.- gatsby-plugin-offline
+
+2.- gatsby-source-filesystem
+
+3.- gatsby-plugin-sitemap
+
+4.- gatsby-transformer-sharp
+
+5.- gatsby-plugin-sharp
+
+6.- gatsby-transformer-remark
+
+7.- gatsby-remark-copy-linked-files
+
+8.- gatsby-remark-smartypants
+
+9.- gatsby-plugin-gdpr-cookies
+
+10.- gatsby-plugin-netlify
+
+11.- gatsby-plugin-netlify-cms
+
+12.- @gatsby-contrib/gatsby-plugin-elasticlunr-search
+
+13.- gatsby-plugin-feed
+
+14.- gatsby-plugin-manifest
+
+15.- gatsby-plugin-google-tagmanager
+
+16.- gatsby-plugin-nprogress
+
+17.- gatsby-plugin-sass
+
+18.- gatsby-plugin-react-helmet
+
+19.- gatsby-remark-images
+
+20.- gatsby-remark-relative-images
+
+21.-
+
+22.-
+
+23.-
+
+
+

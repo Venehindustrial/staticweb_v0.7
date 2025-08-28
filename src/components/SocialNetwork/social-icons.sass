@@ -1,0 +1,48 @@
+
+// Social Icons Custom Styles
+.social-icons
+  display: flex
+  align-items: center
+  justify-content: center
+  gap: 0.5rem
+  flex-wrap: wrap
+
+  .social-icon-container
+    display: flex
+    flex-direction: column
+    align-items: center
+
+    .social-label
+      font-size: 0.75rem
+      margin-top: 0.25rem
+      color: $text-light
+
+  // Hover effects
+  .social-icon
+    transition: all 0.3s ease
+    cursor: pointer
+
+    &:hover
+      transform: translateY(-2px)
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15)
+
+// Responsive adjustments
+@media (max-width: 768px)
+  .social-icons
+    .social-icon
+      height: 35px !important
+      width: 35px !important
+
+// Different layouts
+.social-icons-vertical
+  flex-direction: column
+  gap: 1rem
+
+.social-icons-horizontal
+  flex-direction: row
+
+.social-icons-grid
+  display: grid
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr))
+  gap: 1rem
+  justify-items: center
