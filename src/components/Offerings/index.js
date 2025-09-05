@@ -25,7 +25,24 @@ const Offerings = (props) => {
 Offerings.propTypes = {
   gridItems: PropTypes.arrayOf(
     PropTypes.shape({
-      image: PropTypes.string,
+      // image: PropTypes.any,  // Accept any type
+      image: PropTypes.oneOfType([
+        PropTypes.string,           // For regular image URLs
+        PropTypes.shape({           // Gatsby processed image
+          childImageSharp: PropTypes.shape({
+            gatsbyImageData: PropTypes.object,
+            fluid: PropTypes.object,
+            fixed: PropTypes.object,
+          }),
+          publicURL: PropTypes.string,
+          relativePath: PropTypes.string,
+          name: PropTypes.string,
+        }),
+        PropTypes.shape({           // Simple file object
+          publicURL: PropTypes.string,
+          relativePath: PropTypes.string,
+        })
+      ]).isRequired,
       text: PropTypes.string,
     }),
   ),

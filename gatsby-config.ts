@@ -51,6 +51,14 @@ const config: GatsbyConfig = {
       },
     },
     {
+      // Integration of MailChimp Suscribe Form
+      resolve: 'gatsby-plugin-mailchimp',
+      options: {
+        endpoint: 'https://site.us5.list-manage.com/subscribe/post?u=dfd1358ee4109a606db3c7059&id=d643a76f58&f_id=005199e1f0', // string; add your MC list endpoint here; see instructions below
+        timeout: 4500, // number; the amount of time, in milliseconds, that you want to allow mailchimp to respond to your request before timing out. defaults to 3500
+      },
+    },
+    {
       // keep as first gatsby-source-filesystem plugin for gatsby image support
       resolve: 'gatsby-source-filesystem',
       options: {

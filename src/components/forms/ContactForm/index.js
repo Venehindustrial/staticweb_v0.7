@@ -264,15 +264,71 @@ const ContactForm = () => {
       <div className="container">
         <h2>Contact Us</h2>
         
-        {/* Hidden form for Netlify Forms detection */}
-        <form name="contact" netlify netlify-recaptcha hidden>
-          <input type="text" name="name" />
-          <input type="email" name="email" />
-          <input type="text" name="subject" />
-          <textarea name="message"></textarea>
-        </form>
+        {/* Form for Netlify Forms detection */}
+        <form name="contact" onSubmit={handleSubmit} netlify netlify-recaptcha>
+          <div className="field">
+            <label htmlFor="name" className="label">Name *</label>
+            <div className="control">
+              <input 
+                type="text" 
+                name="name"
+                className="input"
+                value={formData.name}
+                onChange={handleInputChange}
+                required
+                disabled={isLoading} 
+              />
+            </div>
+          </div>
 
-        {/* Actual form */}
+          <div className="field">
+            <label htmlFor="email" className="label">Email *</label>
+            <div className="control">
+              <input 
+                type="email" 
+                name="email" 
+                id="email"
+                className="input"
+                value={formData.email}
+                onChange={handleInputChange}
+                disabled={isLoading}
+                required/>
+            </div>
+          </div>
+
+          <div className="field">
+            <label htmlFor="subject" className="label">Subject</label>
+            <div className="control">
+              <input 
+                type="text" 
+                name="subject"
+                id="subject"
+                className="input"
+                value={formData.subject}
+                onChange={handleInputChange}
+                disabled={isLoading} 
+              /> 
+            </div>
+          </div>
+
+          <div className="field">
+            <label htmlFor="message" className="label">Message *</label>
+            <div className="control">
+              <textarea 
+                name="message"
+                className="textarea"
+                value={formData.message}
+                onChange={handleInputChange}
+                rows="6"
+                required
+                disabled={isLoading} 
+              />
+            </div>
+          </div>
+        {/* </form> */}
+
+        {/* Actual form
+        
         <form onSubmit={handleSubmit} className="contact-form-fields">
           <div className="field">
             <label htmlFor="name" className="label">Name *</label>
@@ -336,6 +392,7 @@ const ContactForm = () => {
               />
             </div>
           </div>
+          */}
 
           <div className="field">
             <div className="control">
