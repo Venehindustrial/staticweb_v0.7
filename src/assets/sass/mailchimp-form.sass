@@ -7,33 +7,60 @@
   background: #f8f9fa
   border-radius: 8px
 
-.form-fields
-  margin-bottom: 1.5rem
+  .form-fields
+    margin-bottom: 1.5rem
 
-.field
-  margin-bottom: 1rem
+  .field
+    margin-bottom: 1rem
   
-  label
-    display: block
-    margin-bottom: 0.5rem
-    font-weight: 600
-    color: #333
+    label
+      display: block
+      margin-bottom: 0.5rem
+      font-weight: 600
+      color: #333
     
-  input
-    width: 100%
-    padding: 0.75rem
-    border: 2px solid #e0e0e0
-    border-radius: 4px
-    font-size: 1rem
-    transition: border-color 0.3s ease
+    input
+      width: 100%
+      padding: 0.75rem
+      border: 2px solid #e0e0e0
+      border-radius: 4px
+      font-size: 1rem
+      transition: border-color 0.3s ease
     
-    &:focus
-      outline: none
-      border-color: #007bff
+      &:focus
+        outline: none
+        border-color: #007bff
       
-    &:disabled
-      background-color: #f5f5f5
-      cursor: not-allowed
+      &:disabled
+        background-color: #f5f5f5
+        cursor: not-allowed
+  
+  .recaptcha-container
+    display: flex
+    justify-content: center
+    margin: 20px 0
+    
+  .recaptcha-loading
+      padding: 10px
+      text-align: center
+      color: #666
+      font-style: italic
+      
+  .recaptcha-notice
+    margin-top: 15px
+    text-align: center
+    
+    small
+      color: #666
+      font-size: 12px
+      line-height: 1.4
+      
+      a
+        color: #1976d2
+        text-decoration: none
+        
+        &:hover
+          text-decoration: underline
 
 .subscribe-button
   width: 100%
