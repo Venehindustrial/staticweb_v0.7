@@ -176,39 +176,39 @@ const config: GatsbyConfig = {
         entryLimit: 45000, // Max entries per sitemap file
     
         // Custom pages with specific priorities
-        additionalSitemaps: [
-          {
-            name: 'important-pages',
-            pages: [
-              {
-                path: '/',
-                changefreq: 'daily',
-                priority: 1.0,
-              },
-              {
-                path: '/about',
-                changefreq: 'monthly',
-                priority: 0.9,
-              },
-              {
-                path: '/services',
-                changefreq: 'monthly',
-                priority: 0.9,
-              },
-              {
-                path: '/contact',
-                changefreq: 'monthly',
-                priority: 0.8,
-              },
-              {
-                path: '/pricing',
-                changefreq: 'weekly',
-                priority: 0.8,
-              },
-            ],
-          },
-        ],
-      },
+        //additionalSitemaps: [
+        //  {
+        //    name: 'important-pages',
+        //    pages: [
+        //      {
+        //        path: '/',
+        //        changefreq: 'daily',
+        //        priority: 1.0,
+        //      },
+        //      {
+        //        path: '/about',
+        //        changefreq: 'monthly',
+        //        priority: 0.9,
+        //      },
+        //      {
+        //        path: '/services',
+        //        changefreq: 'monthly',
+        //        priority: 0.9,
+        //      },
+        //      {
+        //        path: '/contact',
+        //        changefreq: 'monthly',
+        //        priority: 0.8,
+        //      },
+        //      {
+        //        path: '/pricing',
+        //        changefreq: 'weekly',
+        //        priority: 0.8,
+        //      },
+        //    ],
+        //  },
+        //  ],
+        },
     },
     //{
     //  resolve: 'gatsby-plugin-manifest',
