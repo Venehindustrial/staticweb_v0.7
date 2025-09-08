@@ -83,11 +83,131 @@ const config: GatsbyConfig = {
       __key: "pages"
     },
     {
+      //resolve: 'gatsby-plugin-sitemap',
+      //options: {
+      //  output: `/seo-sitemap.xml`,
+      //  exclude: [`/tags`, `/tags/*`, `/success`],
+      //  createLinkInHead: 'true',
+      //},
+
       resolve: 'gatsby-plugin-sitemap',
       options: {
-        output: `/seo-sitemap.xml`,
-        exclude: [`/tags`, `/tags/*`, `/success`],
-        createLinkInHead: 'true',
+        // Output file name (will be available at yoursite.com/sitemap-index.xml)
+        output: '/seo-sitemap.xml',
+    
+        // Exclude specific pages from sitemap
+        excludes: [
+          `/tags`,
+          `/tags/*`,
+          `/success`,
+          `/404`,
+          `/404.html`,
+          `/dev-404-page`,
+          `/admin`,
+          `/admin/*`,
+          `/preview`,
+          `/preview/*`,
+          `/drafts`,
+          `/drafts/*`,
+        ],
+    
+        // Query for getting all pages
+        query: `
+          {
+            allSitePage {
+              nodes {
+                path
+              }
+            }
+            allMarkdownRemark(filter: {frontmatter: {templateKey: {ne: null}}}) {
+              nodes {
+                fields {
+                  slug
+                }
+                frontmatter {
+                  date
+                  templateKey
+                  title
+                }
+              }
+            }
+          }
+        `,
+    
+        // Custom function to resolve pages
+        //resolvePages: ({
+        //  allSitePage: { nodes: allPages },
+        //  allMarkdownRemark: { nodes: allMarkdownPages },
+        //}) => {
+          // Get static pages
+        // const staticPages = allPages.map((page: { path: any; }) => ({
+        //    path: page.path,
+        //    changefreq: 'monthly',
+        //    priority: 0.7,
+        //    lastmod: new Date().toISOString().split('T')[0],
+        //  }));
+
+          // Get blog/article pages with more detailed info
+        //  const blogPages = allMarkdownPages
+        //    .filter((page: { frontmatter: { templateKey: string; }; }) => page.frontmatter.templateKey === 'article-page')
+        //    .map((page: { fields: { slug: any; }; frontmatter: { date: any; }; }) => ({
+        //      path: page.fields.slug,
+        //      changefreq: 'weekly',
+        //      priority: 0.8,
+        //      lastmod: page.frontmatter.date || new Date().toISOString().split('T')[0],
+        //    }));
+
+          // Combine all pages
+        //  return [...staticPages, ...blogPages];
+        //},
+    
+        // Custom serialize function for fine-grained control
+        //serialize: ({ path, changefreq, priority, lastmod }) => ({
+        //  url: path,
+        //  changefreq: changefreq || 'monthly',
+        //  priority: priority || 0.5,
+        //  lastmod: lastmod || new Date().toISOString().split('T')[0],
+        //}),
+    
+        // Create link in HTML head
+        createLinkInHead: true,
+    
+        // Additional options
+        entryLimit: 45000, // Max entries per sitemap file
+    
+        // Custom pages with specific priorities
+        additionalSitemaps: [
+          {
+            name: 'important-pages',
+            pages: [
+              {
+                path: '/',
+                changefreq: 'daily',
+                priority: 1.0,
+              },
+              {
+                path: '/about',
+                changefreq: 'monthly',
+                priority: 0.9,
+              },
+              {
+                path: '/services',
+                changefreq: 'monthly',
+                priority: 0.9,
+              },
+              {
+                path: '/contact',
+                changefreq: 'monthly',
+                priority: 0.8,
+              },
+              {
+                path: '/pricing',
+                changefreq: 'weekly',
+                priority: 0.8,
+              },
+            ],
+          },
+        ],
       },
     },
     //{

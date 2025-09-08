@@ -58,8 +58,8 @@ const HomePageTemplate = (props) => {
                       <div>
                         <div style={{ padding: 8 }}>
                           <ProgressiveImageContainer
-                            image='/img/enersol.jpg'
-                            alt='venehindustrial-business-enersol'
+                            image='/img/upun.png'
+                            alt='venehindustrial-business-upun'
                             className='image-display'
                             style={{ width: '100%' }}
                           />
@@ -68,8 +68,8 @@ const HomePageTemplate = (props) => {
                       <div>
                         <div style={{ padding: 8 }}>
                           <ProgressiveImageContainer
-                            image='/img/exertherm24x7_01.jpg'
-                            alt='venehindustrial-business-exertherm'
+                            image='/img/merz-logo-claim-white.png'
+                            alt='venehindustrial-business-merz'
                             className='image-display'
                             style={{ width: '100%' }}
                           />
@@ -88,8 +88,8 @@ const HomePageTemplate = (props) => {
                       <div>
                         <div style={{ padding: 8 }}>
                           <ProgressiveImageContainer
-                            image='/img/ohuiLighting02.jpg'
-                            alt='venehindustrial-business-ohuiLighting'
+                            image='/img/marechal-logo.svg'
+                            alt='venehindustrial-business-marechal'
                             style={{ width: '100%' }}
                           />
                         </div>
