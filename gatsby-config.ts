@@ -111,7 +111,7 @@ const config: GatsbyConfig = {
           `/drafts/*`,
         ],
     
-        // Query for getting all pages
+       // Query to get all pages and posts
         query: `
           {
             allSitePage {
@@ -119,98 +119,37 @@ const config: GatsbyConfig = {
                 path
               }
             }
-            allMarkdownRemark(filter: {frontmatter: {templateKey: {ne: null}}}) {
-              nodes {
-                fields {
-                  slug
-                }
-                frontmatter {
-                  date
-                  templateKey
-                  title
-                }
+            site {
+              siteMetadata {
+                siteUrl
               }
             }
           }
         `,
-    
-        // Custom function to resolve pages
-        //resolvePages: ({
-        //  allSitePage: { nodes: allPages },
-        //  allMarkdownRemark: { nodes: allMarkdownPages },
-        //}) => {
-          // Get static pages
-        // const staticPages = allPages.map((page: { path: any; }) => ({
-        //    path: page.path,
-        //    changefreq: 'monthly',
-        //    priority: 0.7,
-        //    lastmod: new Date().toISOString().split('T')[0],
-        //  }));
 
-          // Get blog/article pages with more detailed info
-        //  const blogPages = allMarkdownPages
-        //    .filter((page: { frontmatter: { templateKey: string; }; }) => page.frontmatter.templateKey === 'article-page')
-        //    .map((page: { fields: { slug: any; }; frontmatter: { date: any; }; }) => ({
-        //      path: page.fields.slug,
-        //      changefreq: 'weekly',
-        //      priority: 0.8,
-        //      lastmod: page.frontmatter.date || new Date().toISOString().split('T')[0],
-        //    }));
-
-          // Combine all pages
-        //  return [...staticPages, ...blogPages];
+        // Custom serialize function
+        //serialize: ({ path, modifiedGmt }) => {
+        //  return {
+        //    url: path,
+        //    lastmod: modifiedGmt,
+        //    changefreq: path === '/' ? 'daily' : 'weekly',
+        //    priority: path === '/' ? 1.0 : 0.7,
+        //  };
         //},
-    
-        // Custom serialize function for fine-grained control
-        //serialize: ({ path, changefreq, priority, lastmod }) => ({
-        //  url: path,
-        //  changefreq: changefreq || 'monthly',
-        //  priority: priority || 0.5,
-        //  lastmod: lastmod || new Date().toISOString().split('T')[0],
-        //}),
+
+        serialize: ({ path, modifiedGmt }: { path: string; modifiedGmt?: string }) => {
+          return {
+            url: path,
+            lastmod: modifiedGmt || new Date().toISOString(),
+            changefreq: path === '/' ? 'daily' as const : 'weekly' as const,
+            priority: path === '/' ? 1.0 : 0.7,
+          };
+        },
     
         // Create link in HTML head
         createLinkInHead: true,
-    
-        // Additional options
-        entryLimit: 45000, // Max entries per sitemap file
-    
-        // Custom pages with specific priorities
-        //additionalSitemaps: [
-        //  {
-        //    name: 'important-pages',
-        //    pages: [
-        //      {
-        //        path: '/',
-        //        changefreq: 'daily',
-        //        priority: 1.0,
-        //      },
-        //      {
-        //        path: '/about',
-        //        changefreq: 'monthly',
-        //        priority: 0.9,
-        //      },
-        //      {
-        //        path: '/services',
-        //        changefreq: 'monthly',
-        //        priority: 0.9,
-        //      },
-        //      {
-        //        path: '/contact',
-        //        changefreq: 'monthly',
-        //        priority: 0.8,
-        //      },
-        //      {
-        //        path: '/pricing',
-        //        changefreq: 'weekly',
-        //        priority: 0.8,
-        //      },
-        //    ],
-        //  },
-        //  ],
-        },
+      },
     },
-    //{
     //  resolve: 'gatsby-plugin-manifest',
     //  options: {
     //    "icon": "src/images/icon.png"
